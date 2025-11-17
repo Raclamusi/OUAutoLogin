@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OU Auto Login
 // @namespace    https://github.com/Raclamusi
-// @version      1.0.0
+// @version      1.1.0
 // @description  大阪大学全学 IT 認証基盤サービスに自動でログインします。 Automatically log in to the Osaka University University Campus-wide IT Authentication Platform Service.
 // @author       Raclamusi
 // @supportURL   https://github.com/Raclamusi/OUAutoLogin
@@ -41,6 +41,22 @@
             const errorh1 = document.querySelector('.errorh1');
             if (errorh1) {
                 store("error", true);
+            }
+            return;
+        }
+        if (document.location.pathname === "/idp/sso_redirect") {
+            // ロールID選択画面の場合は大きいボタンを設置する
+            const roleTable = document.querySelector('table.style_table2');
+            if (roleTable) {
+                const roleTRs = roleTable.querySelectorAll('tr:has(input)');
+                const okButton = document.querySelector('input#ok')
+                for (const tr of roleTRs) {
+                    const input = tr.querySelector('input');
+                    tr.addEventListener("click", () => {
+                        input.click();
+                        okButton.click();
+                    });
+                }
             }
             return;
         }
