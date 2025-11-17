@@ -59,6 +59,7 @@
             idInput.value = id;
             passwordInput.value = password;
             setTimeout(() => loginButton.click());
+            setInterval(() => loginButton.click(), 100);
             return;
         }
         if (error) {
