@@ -23,7 +23,7 @@
     // CLE
     if (document.location.hostname === "www.cle.osaka-u.ac.jp") {
         // 「ログイン(大阪大学個人IDを持っている方)」ボタンが存在したら、自動で押す
-        const loginButton = document.querySelector('input[id="loginsaml"]');
+        const loginButton = document.querySelector('input#loginsaml');
         if (loginButton) {
             loginButton.click();
         }
@@ -45,8 +45,8 @@
             return;
         }
 
-        const idInput = document.querySelector('input[id="USER_ID"]');
-        const passwordInput = document.querySelector('input[id="USER_PASSWORD"]');
+        const idInput = document.querySelector('input#USER_ID');
+        const passwordInput = document.querySelector('input#USER_PASSWORD');
         const loginButton = document.querySelector('input[name="cmdForm.Submit"]');
         if (!(idInput && passwordInput && loginButton)) {
             return;
